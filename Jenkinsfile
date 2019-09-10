@@ -1,16 +1,16 @@
 node {
-    def server = Artifactory.server('saritha.jfrog.io')
+    def server = Artifactory.server('shrij34.jfrog.io')
     def buildInfo = Artifactory.newBuildInfo()
     def rtMaven = Artifactory.newMavenBuild()
     
     
     stage ('Checkout & Build') {
-        git url: 'https://github.com/itrainjaquar/jfrog-maven.git'
+        git url: 'https://github.com/Shrij34/jfrog-maven.git'
     }
  
     stage ('Unit Test') {
-        rtMaven.tool = 'Maven-3.6.0' // Tool name from Jenkins configuration
-        rtMaven.run pom: 'pom.xml', goals: 'clean compile test'
+        rtMaven.tool = 'Maven-3.6.1' // Tool name from Jenkins configuration
+        rtMaven.run pom: 'pom.xml', goals: 'test'
     }
     
     stage('SonarQube Analysis') {
